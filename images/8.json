@@ -1,0 +1,147 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "Container",
+            "style": "accent",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "size": "Large",
+                                    "weight": "Bolder",
+                                    "text": "${city}",
+                                  
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch"
+                        }
+                    ]
+                }
+            ],
+            "bleed": true
+        },
+        {
+            "type": "Container",
+            "spacing": "Large",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                       
+                        {
+                            "type": "Column",
+                            "spacing": "Large",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "weight": "Bolder",
+                                    "text": "Centre_Name",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch"
+                        },
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "weight": "Bolder",
+                                    "text": "Vaccine_Name",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch"
+                        },
+                         
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "weight": "Bolder",
+                                    "text": "Availability",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "auto"
+                        }
+                    ]
+                }
+            ],
+            "bleed": true
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "$data": "${properties}",
+                                    "type": "TextBlock",
+                                    "color": "${if(fee=='0','good','warning')}",
+                                    "text": "${name} ",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch"
+                        },
+                        {
+                            "type": "Column",
+                            "items": [
+                                {
+                                    "$data": "${properties}",
+                                    "type": "TextBlock",
+                                    
+                                    "text": "${vaccine} ",
+                                    "wrap": true
+                                }
+                            ],
+                            "width": "stretch"
+                        },
+                        {
+                            "type": "Column",
+                            "items": [
+                                 {
+                                    "$data": "${properties}",
+                                     "type": "TextBlock",
+                                     "horizontalAlignment": "Right",              
+                                     "text": "${available_capacity} ",
+                                     "wrap": true
+                                }
+                            ],
+                            "width": "auto"
+                        }
+                    ]
+                }
+                
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "",
+            "weight":"bolder"
+        },
+        
+        {
+            "type": "TextBlock",
+            "text": "\n\n Green represents Free, Orange represents Paid Vaccine"
+        }
+        
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "fallbackText": "This card requires Adaptive Cards v1.2 support to be rendered properly."
+}

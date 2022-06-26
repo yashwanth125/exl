@@ -1,0 +1,47 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "body": [
+       
+        {
+            "type": "Input.ChoiceSet",
+            "id": "CompactSelectVal",
+            "label": "Select the City",
+           
+            "style": "compact",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "value": "Bengaluru",
+            "choices": [
+                {
+                    "title": "Bengaluru",
+                    "value": "Bengaluru"
+                },
+                {
+                    "title": "Chennai",
+                    "value": "Chennai"
+                },
+                
+                {
+                    "title": "Chittoor, Andhra Pradesh",
+                    "value": "Chittoor"
+                },
+                {
+                    "title": "Hyderabad",
+                    "value": "Hyderabad"
+                },
+                {
+                    "title": "LUCKNOW",
+                    "value": "LUCKNOW"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ]
+}

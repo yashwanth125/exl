@@ -1,0 +1,276 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "style": "emphasis",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "size": "Large",
+                                    "weight": "Lighter",
+                                    "color": "Accent",
+                                    "text": "${HOSPITAL_NAME}",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "\n ",
+                                    "weight": "Lighter",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "Contact:  ${if(CONTACT,CONTACT,'NA')}",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "\n ",
+                                    "weight": "Lighter",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "None",
+                                    "weight": "Bolder",
+                                    "text": "Updated On:",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "None",
+                                    "weight": "Bolder",
+                                    "text": " ${if(DATETIME, DATETIME, if(LAST_UPDATED,LAST_UPDATED,if(DATE,DATE,if(LAST_SYNCED,LAST_SYNCED,'NA'))))} ",
+                                    "wrap": true
+                                }
+                            ],
+                            "bleed": true,
+                            "height": "stretch"
+                        },
+                        {
+                            "type": "ActionSet",
+                            "separator": true,
+                            "actions": [
+                                {
+                                    "type": "Action.OpenUrl",
+                                    "url": "${if(LOCATION,LOCATION,'NA')}",
+                                    "title": "Locate",
+                                    "style": "positive"
+                                }
+                            ],
+                            "spacing": "Medium"
+                        }
+                    ],
+                    "width": 40,
+                    "height": "stretch"
+                },
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "height": "stretch",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "Large",
+                                                    "weight": "Lighter",
+                                                    "text": "Available",
+                                                    "color": "good",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": 1
+                                        }
+                    
+                                    ]
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "Medium",
+                                                    "weight": "Lighter",
+                                                    "text": "Oxygen Beds",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                    "size": "Medium",
+                                                    "weight": "Lighter",
+                                                    "text": "Normal Beds",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                    "size": "Medium",
+                                                    "weight": "Lighter",
+                                                    "text": "ICU Beds",
+                                                    "wrap": true
+                                                }
+                                                
+
+
+                                            ],
+                                            "width": "stretch"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                               
+                                                
+                                                 {
+                                                    "type": "TextBlock",
+                                                    
+                                                    "horizontalAlignment": "Right",
+                                                    
+                                                    "text": "${if(OXYGEN_SUPPORTED_BEDS_VACANT,OXYGEN_SUPPORTED_BEDS_VACANT, if(AVAILABLE_BEDS_HDU,AVAILABLE_BEDS_HDU,if(OXYGEN_GENERAL_AVAILABLE,OXYGEN_GENERAL_AVAILABLE,if(NET_AVAILABLE_HDU,NET_AVAILABLE_HDU,OXYGEN_BEDS_VACANT))))} ",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                   
+                                                    
+                                                    "horizontalAlignment": "Right",
+                                                    "text": "${if(BEDS_FOR_SUSPECTED_CASES_VACANT,BEDS_FOR_SUSPECTED_CASES_VACANT, if(AVAILABLE_BEDS_GEN,AVAILABLE_BEDS_GEN,if(GENERAL_AVAILABLE,GENERAL_AVAILABLE,if(NET_AVAILABLE_GENERAL,NET_AVAILABLE_GENERAL,REGULAR_BEDS_VACANT))))} ",
+                                                   
+                                                    "wrap": true
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                   
+                                                    "horizontalAlignment": "Right",
+                                                    
+                                                    "text": "${if(ICU_BEDS_VACANT,ICU_BEDS_VACANT, if(AVAILABLE_BEDS_ICU,AVAILABLE_BEDS_ICU,if(NET_AVAILABLE_ICU,NET_AVAILABLE_ICU,ICU_AVAILABLE)))} ",
+                                                    "wrap": true
+                                                }
+                                                
+
+
+                                            
+                                                
+                                            ],
+                                            "width": "auto"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "Large",
+                                                    "weight": "Lighter",
+                                                    "text": "Alloated",
+                                                    "wrap": true,
+                                                     "color": "attention"
+                                                }
+                                            ],
+                                            "width": "stretch"
+                                        }
+                    
+                                    ]
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "Medium",
+                                                    "weight": "Lighter",
+                                                    "text": "Oxygen  Beds",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                    "size": "Medium",
+                                                    "weight": "Lighter",
+                                                    "text": "Normal Beds",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                    "size": "Medium",
+                                                    "weight": "Lighter",
+                                                    "text": "ICU Beds",
+                                                    "wrap": true
+                                                }
+                                                
+
+
+                                            ],
+                                            "width": "stretch"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                               
+                                                {
+                                                    "type": "TextBlock",
+                                                    
+                                                    "horizontalAlignment": "Right",
+                                                    
+                                                    "text": "${if(OXYGEN_SUPPORTED_BEDS_OCCUPIED,OXYGEN_SUPPORTED_BEDS_OCCUPIED,if(ALLOCATED_BEDS_HDU,ALLOCATED_BEDS_HDU,if(OXYGEN_GENERAL_OCCUPIED,OXYGEN_GENERAL_OCCUPIED,if(ALLOCATED_HDU,ALLOCATED_HDU,OXYGEN_BEDS_OCCUPIED))))} ",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                    "horizontalAlignment": "Right",
+                                                    "text": "${if(BEDS_FOR_SUSPECTED_CASES_OCCUPIED,BEDS_FOR_SUSPECTED_CASES_OCCUPIED,if(ALLOCATED_BEDS_GEN,ALLOCATED_BEDS_GEN,if(GENERAL_OCCUPIED,GENERAL_OCCUPIED,if(ALLOCATED_GENERAL,ALLOCATED_GENERAL,REGULAR_BEDS_OCCUPIED))))} ",
+                                                    "wrap": true
+                                                },
+                                                 {
+                                                    "type": "TextBlock",
+                                                  
+                                                    "horizontalAlignment": "Right",
+                                                    "text": "${if(ICU_BEDS_OCCUPIED,ICU_BEDS_OCCUPIED, if(ALLOCATED_BEDS_ICU,ALLOCATED_BEDS_ICU,if(ALLOCATED_ICU,ALLOCATED_ICU,ICU_OCCUPIED)))} ",
+                                                    "wrap": true
+                                                }
+                                                
+
+
+                                           
+                                            ],
+                                            "width": "auto"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 55
+                }
+            ],
+            "height": "stretch"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0"
+}

@@ -1,0 +1,50 @@
+
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "Input.ChoiceSet",
+            "id": "CompactSelectVal",
+            "label": "Can you please fill the Form",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "value": "Single Policy",
+            "choices": [
+                {
+                    "title": "Single Policy",
+                    "value": "single"
+                },
+                {
+                    "title": "Group Policy",
+                    "value": "group"
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "CompactSelectVal2",
+            "label": "How many People",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "value": "Bengaluru",
+            "choices": [
+                {
+                    "title": "1",
+                    "value": "1"
+                },
+                {
+                    "title": "2",
+                    "value": "2"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ]
+}

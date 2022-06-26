@@ -1,0 +1,80 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Here is the Check list",
+            "size": "Medium",
+            "weight": "Bolder",
+            "wrap": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "Car Insurance Policy",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "There are two types of car insurance policies available in the market: Third Party Insurance: The legal liabilities arising from third-party injury, damage or death are covered under this type. Comprehensive Insurance: This type provides your car protection from artificial as well as natural circumstances along with the third-party cover.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Additional Benefits",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "These are also called as add-on features. They are additional covers you can have by paying more premium. They are designed to protect your car from the scenarios that are excluded from your core car insurance. The common add-ons people go for are a voluntary deductible cover, no-claim-bonus, loss of baggage and a few more.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Network of Garages",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Just like certain hospitals fall under the network of insurers providing health insurance​, car insurance companies also have garages under the network. Make a list of garages that fall under the network of your insurer.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Claim Settlement Ratio",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "It is the ratio between claims accepted by the insurer against total claims submitted annually. The high ratio is a sign that the insurance company chosen by you accepts claims of their customers.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        }
+    ]
+}

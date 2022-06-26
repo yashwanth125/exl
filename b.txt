@@ -1,0 +1,124 @@
+const {WaterfallDialog, ComponentDialog, } = require('botbuilder-dialogs');
+const {ConfirmPrompt, ChoicePrompt, TextPrompt, ActivityPrompt, DialogSet, NumberPrompt, DialogTurnStatus } = require('botbuilder-dialogs');
+const {CardFactory, ActivityHandler, MessageFactory} = require('botbuilder');
+const e1 = require('./images/2.json')
+const unknown = require('./images/3.json')
+const health_ = require('./images/Health_checklist.json')
+const v5 = require('./images/5.json')
+const v6 = require('./images/6.json');
+const v9 = require('./images/9.json');
+var intent_ln
+var ACData = require("adaptivecards-templating");
+
+
+
+const axios = require('axios');
+var https = require('https')
+const { ActivityTypes} = require('botbuilder');
+const { setgroups } = require('process');
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false // (NOTE: this will disable client verification)
+  })
+const CONFIRM_PROMPT   = 'CONFIRM_PROMPT';
+const TEXT_PROMPT      = 'TEXT_PROMPT';
+const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
+const CARD_PROMPT = 'CARD_PROMPT';
+const CHOICE_PROMPT = 'CHOICE_PROMPT';
+const NUMBER_PROMPT = 'NUMBER_PROMPT';
+
+var endDialog ='';
+var mongo={};
+
+
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+    }
+
+
+class PidDetail extends ComponentDialog 
+{
+    constructor(userState)
+    {
+        super('pidDetail');
+        this.addDialog(new ActivityPrompt(CARD_PROMPT, this.inputValidator));
+        this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
+        this.addDialog(new ChoicePrompt(CHOICE_PROMPT));
+        this.addDialog(new ChoicePrompt(TEXT_PROMPT));
+        this.addDialog(new NumberPrompt(NUMBER_PROMPT,this.noOfParticipantsValidator));
+        
+        this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
+            this.firstStep.bind(this),  // Ask confirmation if user wants to make reservation?
+            this.ipdStep.bind(this),
+            this.last_detail.bind(this)
+            // Show summary of values entered by user and ask confirmation to make reservation
+            ]));
+        this.initialDialogId = WATERFALL_DIALOG;
+    }
+   async run(turnContext, accessor,ln)
+   {
+       const dialogSet = new DialogSet(accessor);
+       dialogSet.add(this);
+       intent_ln=ln;
+       const dialogContext = await dialogSet.createContext(turnContext);
+       const results = await dialogContext.continueDialog();
+       if (results.status === DialogTurnStatus.empty){
+           await dialogContext.beginDialog(this.id);
+        }
+    }
+    
+async firstStep(step) 
+{
+    step.values.lang=intent_ln;
+    endDialog = false;
+    return await step.prompt(CHOICE_PROMPT, {
+        prompt: 'Do you want to know the Check list for Health Insurance ?',
+        choices:['Yes', 'No, I know it']
+    });
+}
+async ipdStep(step)
+{
+    var q = step.result.value;
+    if(q=='No, I know it')
+    {
+        return await step.prompt(TEXT_PROMPT, 'Wow, That sounds great');
+        
+
+    }
+    else{
+        await step.context.sendActivity({attachments: [CardFactory.adaptiveCard(health_)]});
+        return await step.prompt(TEXT_PROMPT, 'Wow, That sounds great');
+    }
+}
+
+async last_detail(step)
+{
+    console.log('from end')
+    var query = step.result.value;
+    console.log(query)
+    await step.context.sendActivity('Rest api');
+    endDialog = true;
+    return await step.endDialog();
+
+}
+    
+
+async inputValidator(promptContext)
+{
+    const userInputObject = promptContext.recognized.value.value;
+    return true;
+}
+async isDialogComplete(){
+    return endDialog;
+}
+async sendSuggestedActions(turnContext) {
+    var reply = MessageFactory.suggestedActions(['FAQ','Ip Information'],'What would you like to know?');
+    await turnContext.sendActivity(reply);
+}
+
+    
+}
+module.exports = {mongo}; 
+module.exports.PidDetail = PidDetail;

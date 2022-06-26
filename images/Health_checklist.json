@@ -1,0 +1,80 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Here is the Check list",
+            "size": "Medium",
+            "weight": "Bolder",
+            "wrap": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "Don’t split the Bill",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Insurers might nudge you to consider a co-payment clause, in which case, you’ll be forced to foot a part of the bill each time you make a claim. Could be 10%. Could be 20%. Could even be 30% of the bill. So opting to co-pay might not be the best option, unless you have no choice.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Restrictions on room & room rent",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Some insurers won’t let you pick a room you like. Instead, they’ll have a limit on room rent. And in the event, you breach this limit, they’ll make you pay extra for every little service rendered in the room and not just the rent. At the end of it all, you’ll end up paying a good portion of the bill. So opt for a policy that doesn’t have too many restrictions on this front.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Check for Disease Wise Sub-limits",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "It’s what happens when the insurer offers you a massive cover (say 10 lakhs) for a modest fee, only to include restrictions on how much of this cover will be available for each disease. So, in effect, you’ll likely end up having only a part of the 10 lakhs available in most cases.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Opt for pre and post-hospitalization care",
+            "card": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Nobody falls sick right off the bat. You’ll likely have to go through a host of diagnostic tests before you’re hospitalized. Once you’re discharged you’ll have to worry about medication. And these costs can add up. So it’s always best to pick a policy that covers pre & post-hospitalization care.",
+                        "size": "Medium",
+                        "wrap": true
+                    }
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+            }
+        }
+    ]
+}

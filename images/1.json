@@ -1,0 +1,31 @@
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        
+                        {
+                            "type": "TextBlock",
+                            "text": " Hi, Welcome to EXL Helper Chatbot. Please select from below options.",
+                            "color": "Dark",
+                            "weight": "Bolder",
+                            "wrap": true
+                        }
+    ],
+                  
+     "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Health Insurance",
+            "data":"Health Insurance"
+
+        },
+        {
+            "type": "Action.Submit",
+            "title": "Vehicle Insurance",
+            "data": "Vehicle Insurance"
+
+            
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+}

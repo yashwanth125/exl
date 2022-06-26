@@ -1,0 +1,28 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Medium",
+            "weight": "Bolder",
+            "text": " Please Enter your Mobile Number",
+            "horizontalAlignment": "Center",
+            "wrap": true,
+            "style": "heading"
+        },
+        {
+            "id": "mobile",
+            "label": "Mobile",
+            "type": "Input.Text",
+            "style": "tel"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ]
+}

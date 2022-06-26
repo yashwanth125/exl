@@ -1,0 +1,167 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "style": "emphasis",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "size": "Large",
+                                    "weight": "Lighter",
+                                    "color": "Accent",
+                                    "text": "${HOSPITAL_NAME}",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "\n ",
+                                    "weight": "Lighter",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "Contact:  ${if(CONTACT,CONTACT,'NA')}",
+                                    "wrap": true
+                                }
+                                
+                               
+                            ],
+                            "bleed": true,
+                            "height": "stretch"
+                        },
+                        {
+                            "type": "ActionSet",
+                            "separator": true,
+                            "actions": [
+                                {
+                                    "type": "Action.OpenUrl",
+                                    "url": "${if(LOCATION,LOCATION,'NA')}",
+                                    "title": "Locate",
+                                    "style": "positive"
+                                }
+                            ],
+                            "spacing": "Medium"
+                        }
+                    ],
+                    "width": 40,
+                    "height": "stretch"
+                },
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "height": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "None",
+                                    "weight": "Bolder",
+                                    "text": "Updated On:  ${if(DATETIME, DATETIME, if(LAST_UPDATED,LAST_UPDATED,if(DATE,DATE,'NA')))}",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "None",
+                                    "weight": "Bolder",
+                                    "text": "\n",
+                                    "wrap": true
+                                },
+                               
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "Large",
+                                                    "weight": "Lighter",
+                                                    "text": "Vacant Beds",
+                                                    "color": "Good",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": "stretch"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                
+                                                
+                                                {
+                                                    "type": "TextBlock",
+                                                    "horizontalAlignment": "Right",
+                                                    "text": " ${VACANT} ",
+                                                    "size": "Medium",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": "auto"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "None",
+                                    "weight": "Bolder",
+                                    "text": "\n",
+                                    "wrap": true
+                                },
+                               
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "Large",
+                                                    "weight": "Lighter",
+                                                    "text": "Total Beds",
+                                                    "color": "Attention",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": "stretch"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "horizontalAlignment": "Right",
+                                                    "text": "${TOTAL}",
+                                                    "size": "Medium",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": "auto"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 55
+                }
+            ],
+            "height": "stretch"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0"
+}

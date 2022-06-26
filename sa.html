@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Web Chat: Custom style options</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script crossorigin="anonymous" src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      #webchat {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+   
+   <div id="webchat" role="main">
+     
+   </div>
+
+    
+      
+        
+</body>
+      
+   
+    
+    <script>
+     
+        const styleOptions = {
+          userAvatarInitials: 'You',
+          rootHeight: '95%',
+          bubbleBackground: '#F4F4F4',
+              bubbleBorderColor: '#F4F4F4',
+              bubbleBorderRadius: 4,
+              bubbleBorderWidth: 2,
+              bubbleNubOffset: 0,
+              bubbleNubSize: 10,
+
+              bubbleFromUserBackground: '#F4F4F4',
+              bubbleFromUserBorderColor: '#F4F4F4',
+              bubbleFromUserBorderRadius: 4,
+              bubbleFromUserBorderWidth: 2,
+              bubbleFromUserNubOffset: 0,
+              bubbleFromUserNubSize: 10
+        };
+
+        window.WebChat.renderWebChat(
+          {
+            directLine: window.WebChat.createDirectLine({ token: 'J0noJB_kTCA.5EQ4FsDdYIkI9iC_21y-XF_92eFqSvwZSwckLC_39wY'}),
+            styleOptions
+          },
+          document.getElementById('webchat')
+        );
+        
+
+        document.querySelector('#webchat > *').focus();
+        const webChat = document.getElementById( 'webchat' );
+        webChat.setAttribute( 'style', 'position: relative' );
+        const chatHeader = document.createElement('div')
+        chatHeader.setAttribute( 'style', 'position: absolute; color: black; background-color: rgb(233, 202, 156); height: 4%;top: 0;width: 100%;text-align: center;font-weight: bold;padding-top: 10px;')
+        chatHeader.innerText = "COVID-19 Helper Bot";
+        const chatfooter = document.createElement('div')
+        chatfooter.setAttribute( 'style', 'position: absolute; color: black; background-color: rgb(139, 197, 152); height: 4%;bottom: 0;width: 100%;text-align: center;font-weight: bold;padding-top: 10px;')
+        chatfooter.innerText = "Be careful, Not Fearful. ";
+
+        webChat.appendChild(chatHeader);
+        webChat.appendChild(chatfooter);
+
+        $(document).bind("contextmenu",function(e) {
+ e.preventDefault();
+});
+$(document).keydown(function(e){
+    if(e.which === 123){
+       return false;
+    }
+});
+      
+    </script>
+
+</html>

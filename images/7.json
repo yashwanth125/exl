@@ -1,0 +1,54 @@
+
+
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "Container",
+            "style":"emphasis",
+            "items": [
+        
+        {
+            "type": "TextBlock",
+            "text": "Select the Date",
+            "weight":"bolder"
+        },
+        {
+            "type": "Input.Date",
+            "id": "date",
+            "placeholder": "Enter a date",
+           
+            "value": "2021-05-09",
+            "validation": {
+                "necessity": "Required",
+                "errorMessage": "Date is required"
+              }
+        },
+        {
+            "type": "TextBlock",
+            "text": "Enter the PIN CODE",
+            "weight":"bolder"
+        },
+        {
+            "type": "Input.Number",
+            "id": "number",
+            "placeholder": "Enter your Pincode",
+            "value": 601201,
+            "validation": {
+                "necessity": "Required",
+                "errorMessage": "Pincode is required"
+              }
+           
+        }
+    ],
+    "bleed": true}
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ]
+}

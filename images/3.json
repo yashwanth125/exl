@@ -1,0 +1,32 @@
+
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.0",
+    "body": [
+        
+            {
+                "type": "TextBlock",
+                "text": "",
+                "weight": "bolder"
+              },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "CompactSelectVal",
+            "label": "Please select from the below list",
+            "style": "compact",
+            "isRequired": true,
+            "errorMessage": "This is a required input",
+            "value": "1",
+            "choices": [
+               
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ]
+}
