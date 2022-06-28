@@ -146,19 +146,19 @@ class EchoBot extends ActivityHandler {
                 }
                 break;
           case 'unkown':
-           reply="😶 Sorry I can't understand your Input. Please Rephrase it again";
+            console.log('inside unknown')
+            reply="😶 Sorry I can't understand your Input. Please Rephrase it again";
               // await turnContext.sendActivities([
               //   { type: ActivityTypes.Typing },
               //   { type: 'delay', value: 2000 }]); 
-              await turnContext.sendActivity(reply);
-              conversationData.endDialog = true;
-              await this.previousIntent.set(turnContext,{intentName: null});
-              await this.sendSuggestedActions(turnContext);
-              break;
+            console.log(reply)
+            await turnContext.sendActivity(reply);
+            conversationData.endDialog = true;
+            await this.previousIntent.set(turnContext,{intentName: null});
+            await this.sendSuggestedActions(turnContext);
+            break;
          }
-        
          return reply;
-    
       }
     
 
