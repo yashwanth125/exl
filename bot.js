@@ -97,7 +97,7 @@ class EchoBot extends ActivityHandler {
             }
             break;
           case 'Hi':
-            reply = "Hello! I'm a Virtual bot and I can help you get the hospital status";
+            reply = "Hello! I'm a Virtual bot and I can help you get the Best Insurance for you!";
               await turnContext.sendActivities([
                 { type: ActivityTypes.Typing },
                 { type: 'delay', value: 2000 }]); 
@@ -268,13 +268,13 @@ class EchoBot extends ActivityHandler {
             subject: 'EY-bot',
             text: (turnContext.activity.text || turnContext.activity.value.name)
           };
-          mailTransporter.sendMail(mailDetails, function(err, data) {
-            if(err) {
-                console.log('Error Occurs');
-            } else {
-                console.log('Email sent successfully');
-            }
-        });
+        //   mailTransporter.sendMail(mailDetails, function(err, data) {
+        //     if(err) {
+        //         console.log('Error Occurs');
+        //     } else {
+        //         console.log('Email sent successfully');
+        //     }
+        // });
         
           if(intent)
           {
