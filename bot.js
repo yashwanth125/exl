@@ -50,8 +50,7 @@ class EchoBot extends ActivityHandler {
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
             const welcomeText = 'Hello and welcome!';
-            // await context.sendActivity({attachments: [CardFactory.adaptiveCard(e0)]});
-            await context.sendActivity(welcomeText);
+            await context.sendActivity({attachments: [CardFactory.adaptiveCard(e0)]});
             await next();
         });
     }
