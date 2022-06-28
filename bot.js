@@ -57,7 +57,7 @@ class EchoBot extends ActivityHandler {
     }
     async sendSuggestedActions(turnContext) {
       var reply = MessageFactory.suggestedActions(['Health Insurance','Car Insurance']);
-      await turnContext.sendActivity(reply);
+      await turnContext.sendActivity(MessageFactory.text(reply));
   }
   
     async determineReply(intent, turnContext){
@@ -152,7 +152,7 @@ class EchoBot extends ActivityHandler {
               //   { type: ActivityTypes.Typing },
               //   { type: 'delay', value: 2000 }]); 
             console.log(reply)
-            await turnContext.sendActivity(reply);
+            await turnContext.sendActivity(MessageFactory.text(reply,reply));
             conversationData.endDialog = true;
             await this.previousIntent.set(turnContext,{intentName: null});
             await this.sendSuggestedActions(turnContext);
