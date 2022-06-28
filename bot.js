@@ -57,7 +57,7 @@ class EchoBot extends ActivityHandler {
     }
     async sendSuggestedActions(turnContext) {
       var reply = MessageFactory.suggestedActions(['Health Insurance','Car Insurance']);
-      await turnContext.sendActivity(MessageFactory.text(reply));
+      await turnContext.sendActivity(reply);
   }
   
     async determineReply(intent, turnContext){
@@ -99,10 +99,7 @@ class EchoBot extends ActivityHandler {
             break;
           case 'Hi':
             reply = "Hello! I'm a Virtual bot and I can help you get the Best Insurance for you!";
-              await turnContext.sendActivities([
-                { type: ActivityTypes.Typing },
-                { type: 'delay', value: 2000 }]); 
-              await turnContext.sendActivity(reply);
+              await turnContext.sendActivity(MessageFactory.text(reply,reply));
               conversationData.endDialog = true;
               await this.previousIntent.set(turnContext,{intentName: null});
               await this.sendSuggestedActions(turnContext);
@@ -151,14 +148,14 @@ class EchoBot extends ActivityHandler {
               // await turnContext.sendActivities([
               //   { type: ActivityTypes.Typing },
               //   { type: 'delay', value: 2000 }]); 
-            console.log(reply)
-            await turnContext.sendActivity(MessageFactory.text(reply,reply));
+            await turnContext.sendActivity(MessageFactory.text(reply));
             conversationData.endDialog = true;
             await this.previousIntent.set(turnContext,{intentName: null});
             await this.sendSuggestedActions(turnContext);
             break;
          }
          return reply;
+    
       }
     
 
