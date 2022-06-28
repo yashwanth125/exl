@@ -50,7 +50,8 @@ class EchoBot extends ActivityHandler {
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
             const welcomeText = 'Hello and welcome!';
-            await context.sendActivity({attachments: [CardFactory.adaptiveCard(e0)]});
+            // await context.sendActivity({attachments: [CardFactory.adaptiveCard(e0)]});
+            await context.sendActivity(welcomeText);
             await next();
         });
     }
@@ -146,10 +147,10 @@ class EchoBot extends ActivityHandler {
                 break;
           case 'unkown':
            reply="😶 Sorry I can't understand your Input. Please Rephrase it again";
-              await turnContext.sendActivities([
-                { type: ActivityTypes.Typing },
-                { type: 'delay', value: 2000 }]); 
-                await turnContext.sendActivity(reply);
+              // await turnContext.sendActivities([
+              //   { type: ActivityTypes.Typing },
+              //   { type: 'delay', value: 2000 }]); 
+              await turnContext.sendActivity(reply);
               conversationData.endDialog = true;
               await this.previousIntent.set(turnContext,{intentName: null});
               await this.sendSuggestedActions(turnContext);
@@ -259,15 +260,14 @@ class EchoBot extends ActivityHandler {
           console.log("Determined Intent");
           console.log(intent);
           console.log("reply");
-          console.log(reply);
           //await this.determineReply(intent.intent,turnContext);
           //console.log(intent);
-          let mailDetails = {
-            from: 'yarase234@gmail.com',
-            to: 'yashwanth.sonub@gmail.com',
-            subject: 'EY-bot',
-            text: (turnContext.activity.text || turnContext.activity.value.name)
-          };
+          // let mailDetails = {
+          //   from: 'yarase234@gmail.com',
+          //   to: 'yashwanth.sonub@gmail.com',
+          //   subject: 'EY-bot',
+          //   text: (turnContext.activity.text || turnContext.activity.value.name)
+          // };
         //   mailTransporter.sendMail(mailDetails, function(err, data) {
         //     if(err) {
         //         console.log('Error Occurs');
