@@ -277,8 +277,6 @@ class EchoBot extends ActivityHandler {
           {
             var repl='git'
             console.log(repl)
-            await turnContext.sendActivity(MessageFactory.text(repl));
-            await turnContext.sendActivity(repl);
             console.log('inside')
             reply = await this.determineReply(intent,turnContext);
             console.log(reply);
