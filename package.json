@@ -21,14 +21,14 @@
         "adaptive-expressions": "^4.13.0",
         "adaptivecards-templating": "^2.1.0",
         "axios": "^0.21.1",
-        "botbuilder": "~4.11.1",
-        "botbuilder-dialogs": "^4.13.0",
+        "botbuilder": "~4.16.0",
+        "botbuilder-dialogs": "~4.16.0",
         "compute-cosine-similarity": "^1.0.0",
         "detectlanguage": "^2.1.0",
         "dotenv": "^8.2.0",
         "fs": "0.0.1-security",
         "nodemailer": "^6.5.0",
-        "restify": "~8.5.1"
+        "restify": "~8.6.0"
     },
     "devDependencies": {
         "eslint": "^7.0.0",
