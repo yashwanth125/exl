@@ -7,25 +7,25 @@
         {
             "type": "Input.ChoiceSet",
             "id": "CompactSelectVal",
-            "label": "Can you please fill the Form",
+            "label": "What is your car seating capacity?",
             "isRequired": true,
             "errorMessage": "This is a required input",
             "value": "Single Policy",
             "choices": [
                 {
-                    "title": "Single Policy",
-                    "value": "single"
+                    "title": "1",
+                    "value": "1"
                 },
                 {
-                    "title": "Group Policy",
-                    "value": "group"
+                    "title": "2",
+                    "value": "2"
                 }
             ]
         },
         {
             "type": "Input.ChoiceSet",
             "id": "CompactSelectVal2",
-            "label": "How many People",
+            "label": "How old is your Car?",
             "isRequired": true,
             "errorMessage": "This is a required input",
             "value": "Bengaluru",
@@ -37,6 +37,18 @@
                 {
                     "title": "2",
                     "value": "2"
+                },
+                {
+                    "title": "3",
+                    "value": "3"
+                },
+                {
+                    "title": "4",
+                    "value": "4"
+                },
+                {
+                    "title": "5",
+                    "value": "5"
                 }
             ]
         }

@@ -7,7 +7,7 @@
         {
             "type": "Input.ChoiceSet",
             "id": "CompactSelectVal",
-            "label": "Can you please fill the Form",
+            "label": "Can you please fill the Details",
             "isRequired": true,
             "errorMessage": "This is a required input",
             "value": "Single Policy",
@@ -37,6 +37,14 @@
                 {
                     "title": "2",
                     "value": "2"
+                },
+                {
+                    "title": "3",
+                    "value": "3"
+                },
+                {
+                    "title": "4",
+                    "value": "4"
                 }
             ]
         }
