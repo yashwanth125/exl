@@ -13,11 +13,11 @@
             "value": "Single Policy",
             "choices": [
                 {
-                    "title": "1",
+                    "title": "5",
                     "value": "1"
                 },
                 {
-                    "title": "2",
+                    "title": "8",
                     "value": "2"
                 }
             ]
