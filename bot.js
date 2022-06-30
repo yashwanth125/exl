@@ -3,6 +3,9 @@ const { ActivityHandler, MessageFactory } = require('botbuilder');
 const { ActivityTypes} = require('botbuilder');
 const { CardFactory } = require('botbuilder');
 const e0 = require('./images/1.json')
+const car_ = require('./images/Car_checklist.json')
+const form_ = require('./images/form.json')
+const health_ = require('./images/Health_checklist.json')
 const v7 = require('./images/7.json')
 const { PidDetail} = require('./pidDetail')
 const { VehicleInsurance} = require('./vehicleInsurance')
@@ -84,18 +87,6 @@ class EchoBot extends ActivityHandler {
         console.log('current intent')
         console.log(currentIntent) 
         switch (currentIntent) {
-          case 'Vaccination Centers':
-            await this.conversationData.set(turnContext,{endDialog: false});
-            await this.vaccine.run(turnContext,this.dialogState,intent.ln);
-            conversationData.endDialog = await this.vaccine.isDialogComplete();
-            console.log("conversation  "+conversationData.endDialog)
-            if(conversationData.endDialog)
-            {
-              await this.previousIntent.set(turnContext,{intentName: null});
-              await this.sendSuggestedActions(turnContext);
-              console.log('completed')
-            }
-            break;
           case 'Hi':
             reply = "Hello! I'm a Virtual bot and I can help you get the Best Insurance for you!";
               await turnContext.sendActivity(MessageFactory.text(reply,reply));
@@ -105,7 +96,6 @@ class EchoBot extends ActivityHandler {
               break;
           case 'Bye':
             reply = "Thanks, have a good day";
-                
                 await turnContext.sendActivities([
                   { type: ActivityTypes.Typing },
                   { type: 'delay', value: 2000 }]); 
@@ -127,6 +117,21 @@ class EchoBot extends ActivityHandler {
                   console.log('completed')
                 }
                 break;
+          case 'health_check':
+            reply = "Health Check";
+            await turnContext.sendActivity({attachments: [CardFactory.adaptiveCard(health_)]});
+            conversationData.endDialog = true;
+            await this.previousIntent.set(turnContext,{intentName: null});
+            await this.sendSuggestedActions(turnContext);
+            break;
+
+          case 'car_check':
+            reply = "Car Check";
+            await turnContext.sendActivity({attachments: [CardFactory.adaptiveCard(car_)]});
+            conversationData.endDialog = true;
+            await this.previousIntent.set(turnContext,{intentName: null});
+            await this.sendSuggestedActions(turnContext);
+            break;
 
           case 'car insurance':
                 console.log('car Insurance'+intent.ln)
@@ -223,16 +228,16 @@ class EchoBot extends ActivityHandler {
         }
         console.log('turncontext',turnContext.activity.text);
         //console.log(turnContext.activity)
-        //var suggestion_request = await axios.get('https://onnx-docker.azurewebsites.net/intent',{params: {data: d}});
-        console.log(d)
+        var suggestion_request = await axios.get('http://honey.eastus.azurecontainer.io/intent',{params: {data: d}});
+        console.log(suggestion_request)
   
-          switch (d) 
+          switch (suggestion_request.data || d) 
           {
-            case 'help':
-              intent = { score: 1.0, intent: 'help' };
+            case 'health_check':
+              intent = { score: 1.0, intent: 'health_check' };
               break;
-            case 'feedback':
-              intent = { score: 1.0, intent: 'Feedback' };
+            case 'car_check':
+              intent = { score: 1.0, intent: 'car_check' };
               break;
             case 'hi':
               intent = { score: 1.0, intent: 'Hi', ln: detected_language };
@@ -246,8 +251,8 @@ class EchoBot extends ActivityHandler {
             case 'car insurance':
               intent = { score: 1.0, intent: 'car insurance',ln: detected_language };
               break;
-            case 'vaccine':
-              intent = {score:1.0, intent: 'Vaccination Centers',ln: detected_language}
+            case 'book insurance':
+              intent = {score:1.0, intent: 'book insurance',ln: detected_language}
               break;
             default:
             intent = {score: 1.0, intent: 'unkown', ln: detected_language}
