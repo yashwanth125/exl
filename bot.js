@@ -11,6 +11,8 @@ const { PidDetail} = require('./pidDetail')
 const { VehicleInsurance} = require('./vehicleInsurance')
 const { Vaccine} = require('./vaccine')
 var nodemailer = require('nodemailer');
+var stringCosineSimilarity = require("string-cosine-similarity")
+
 const axios = require('axios');
 const mailTransporter = nodemailer.createTransport({
     service: 'gmail',
@@ -147,11 +149,24 @@ class EchoBot extends ActivityHandler {
                 }
                 break;
           case 'unkown':
-            console.log('inside unknown')
+            console.log('inside unknown');
             reply="😶 Sorry I can't understand your Input. Please Rephrase it again";
-              // await turnContext.sendActivities([
-              //   { type: ActivityTypes.Typing },
-              //   { type: 'delay', value: 2000 }]); 
+            let faq_link = 'http://honey.eastus.azurecontainer.io/faq'
+            let get_results = await axios.get(faq_link);
+            let score = 0;
+            for(var item in get_results.data)
+            {
+              console.log(get_results.data[item]['question'])
+              let obtained_score = stringCosineSimilarity(get_results.data[item]['question'],turnContext.activity.text)
+              console.log(obtained_score)
+              if(obtained_score>0.55 && obtained_score>score)
+              {
+                reply=get_results.data[item]['answer']
+              }
+            }
+              await turnContext.sendActivities([
+                { type: ActivityTypes.Typing },
+                { type: 'delay', value: 2000 }]); 
             await turnContext.sendActivity(MessageFactory.text(reply));
             conversationData.endDialog = true;
             await this.previousIntent.set(turnContext,{intentName: null});
@@ -229,9 +244,11 @@ class EchoBot extends ActivityHandler {
         console.log('turncontext',turnContext.activity.text);
         //console.log(turnContext.activity)
         var suggestion_request = await axios.get('http://honey.eastus.azurecontainer.io/intent',{params: {data: d}});
-        console.log(suggestion_request)
-  
-          switch (suggestion_request.data || d) 
+        console.log(suggestion_request.data)
+        var intent_score = Number(suggestion_request.data.score)
+        if(intent_score>0.65)
+        {
+          switch (suggestion_request.data.intent || d) 
           {
             case 'health_check':
               intent = { score: 1.0, intent: 'health_check' };
@@ -256,8 +273,12 @@ class EchoBot extends ActivityHandler {
               break;
             default:
             intent = {score: 1.0, intent: 'unkown', ln: detected_language}
-            
           }    
+        }
+        else
+        {
+          intent = {score:1.0, intent: 'unkown',ln: detected_language}
+        }
           console.log("Determined Intent");
           console.log(intent);
           console.log("reply");

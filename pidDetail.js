@@ -83,7 +83,7 @@ async ipdStep(step)
     if(q=='No, I know it')
     {
         return await step.prompt(CHOICE_PROMPT, {
-            prompt: 'Do you want to know the Check list for Health Insurance ?',
+            prompt: 'Thats, Great, Do you want to know our Health Insurance Policies ?',
             choices:['Yes', 'No']
         });
     }
