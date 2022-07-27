@@ -74,7 +74,7 @@ async firstStep(step)
     endDialog = false;
     return await step.prompt(CHOICE_PROMPT, {
         prompt: 'Do you want to know the Check list for Health Insurance ?',
-        choices:['Yes', 'No, I know it']
+        choices:['Yes', 'No, I know it','I have a Doubt']
     });
 }
 async ipdStep(step)
@@ -84,15 +84,21 @@ async ipdStep(step)
     {
         return await step.prompt(CHOICE_PROMPT, {
             prompt: 'Thats, Great, Do you want to know our Health Insurance Policies ?',
-            choices:['Yes', 'No']
+            choices:['Yes', 'No','I have a Doubt']
         });
+    }
+    else if(q=='I have a Doubt')
+    {
+        endDialog = true;
+        await step.context.sendActivity('Please enter your doubt');
+        return await step.endDialog();
     }
     else
     {
         await step.context.sendActivity({attachments: [CardFactory.adaptiveCard(health_)]});
         return await step.prompt(CHOICE_PROMPT, {
             prompt: 'Do you want to know our Health Insurance Policies ?',
-            choices:['Yes', 'No']
+            choices:['Yes', 'No','I have a Doubt']
         });
     }
 }
@@ -104,6 +110,12 @@ async last_detail(step)
     {
         endDialog = true;
         await step.context.sendActivity('Okay, Thank you have a nice Day');
+        return await step.endDialog();
+    }
+    else if(q=='I have a Doubt')
+    {
+        endDialog = true;
+        await step.context.sendActivity('Please enter your doubt');
         return await step.endDialog();
     }
     else
@@ -133,7 +145,7 @@ async api(step)
     v5.properties=[]
     return await step.prompt(CHOICE_PROMPT, {
         prompt: 'Do you want to know the premiums?',
-        choices:['Yes', 'No']
+        choices:['Yes', 'No','I have a Doubt']
     });
 }
 
@@ -144,6 +156,12 @@ async final(step)
     {
         await step.context.sendActivity('Thank you have a Nice Day');
         endDialog = true;
+        return await step.endDialog();
+    }
+    else if(q=='I have a Doubt')
+    {
+        endDialog = true;
+        await step.context.sendActivity('Please enter your doubt');
         return await step.endDialog();
     }
     else
